@@ -1,0 +1,78 @@
+is_lm_debug: False
+is_trainer_debug: True
+
+train:
+  lr: 0.00001       # init lr
+  beta_1: 0.5
+  beta_2: 0.999
+  max_iters: 45000
+  save_interval: 5000
+  lr_decay_step: 2500
+  lr_decay_weight: 0.9
+  lambda_meanface_loss: 0.1     # not use
+
+dis:                          # GAN discriminator
+  nf: 64                      # base number of filters
+  n_res_blks: 8              # number of residual blocks in the discriminator
+  num_classes: 5            # number of classes in the training set
+
+face:                        # face landmark detection model
+  modelfilename: '/xxx_absolute_path_xxx/.../face_lm/trained_face_models/05_98_smallscale.pth1'      # path to the face landmark detection pretrained model, use absolute path
+  nStack: 1         # number of stacks in face lm model
+  heatmap_size: 64.0        # size of heatmap
+  device: 'cuda'
+  padding: 0
+  norm2one: True            # whether to normalize the landmarks in range of 0 to 1
+  num_classes: 98       # number of landmarks on a single face
+
+
+init: kaiming               # initialization method, [gaussian/kaiming/xavier/orthogonal]
+
+weights:        # balance different losses
+  gan_w: 2.0                     # weight of adversarial loss
+  fm_w: 2.0                       # weight on distance between gan features of real and generated images
+  face_rec: 5.0             # weight on L1 distance between input image and reconstructed face
+  lm_rec: 10.0            # weight on L1 distance between input landmark and reconstructed landmark
+  lm_rec_trans: 2.0            # weight on L1 distance between input landmark and reconstructed landmark
+  lm2face2lm_rec: 5.0            # weight on DSNTNN loss between input landmark and reconstructed face landmark
+  mean_face: 1.0             # weight on L1 distance between fixed mean face landmark and output of landmark encoder
+  gan_w_lm: 1.0
+
+
+
+trans:
+  is_transloss: 0
+  is_lm_transloss: 1
+  is_lm2face2lm_loss: 0
+
+gen:
+  is_deepdecoder: 1         # whether to use deepere decoder in generator
+  is_multi_scale_loss: 0
+
+lm_AE:                      # landmark autoencoder
+  lm2d_AE: 1d               # 1d or 2d
+  lm2d_loss: 1.5
+  lm2d_loss_norm: 2
+  is_lm_norm: 4             # 0 means no norm AE, 1 means meanface norm AE, 2 means no meanface norm AE
+  norm_type: unit
+  is_meanface_mainroad: 0
+  is_distributed_loss: 0
+  is_hm_AE_v2: 0
+  is_mean_lm_id_loss: 0
+  is_hm_AE: 0
+  is_lm_ae_conv: 1          # whether to use conv structure in lm autoencoder, 0 means MLP structure
+  is_nobd: 1                # donot use landmarks of face boundary
+  is_pretrained_lm_encoder: 0       # whether to use pretrained landmark autoencoder
+
+
+
+
+
+
+size: 220
+padding: 18
+optim: 'Adam'
+is_apex: 0          # whther support apex training, not work when involved face_lm model
+ig_curve: 800       # number of iterations at the beginning not added to log file
+weight_decay: 0.0001
+sshow: False
