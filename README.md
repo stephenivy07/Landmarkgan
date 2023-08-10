@@ -26,12 +26,12 @@ Use opencv-python 3.x and ignore opencv version warning.
 ### Step 1
 * download lm_AE checkpoints from [here](https://drive.google.com/file/d/1xMNIxE5gotHS_30tpOdQ3t2qmQOiVe0e/view?usp=sharing).
 * unzip it and put all files in ./model/ckpt/MODEL_0301_1_patchgan_lmconsis_lm_AE/
-* Modify the absolute path in 00_FSNet_lm_AE.yml files(line 20).
+* Modify the absolute path in 00_FSNet_lm_AE.yml(line 20).
 
 ### Step 2
 * download tl2f checkpoints from [here](https://drive.google.com/file/d/1Pvv7VvqTP3XnZSJ7JHX-YMr_9eTDO0Fo/view?usp=sharing).
 * unzip it and put all files in ./model/ckpt/MODEL_0130_1_patchgan_lmconsis_one_decoder/
-* Modify the absolute path in 00_FSNet_onedecoder.yml files(line 20).
+* Modify the absolute path in 00_FSNet_onedecoder.yml(line 20).
 
 ### Step 3
 * python 0830_tkdemo.py
