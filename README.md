@@ -31,7 +31,7 @@ Use opencv-python 3.x and ignore opencv version warning.
 
 ### Step 3
 * python 0830_tkdemo.py
-* demo:https://drive.google.com/file/d/1ILUi4QVyvtsmBJumXvYHLdnSdZqosl1-/view?usp=sharing
+* [demo](https://drive.google.com/file/d/1ILUi4QVyvtsmBJumXvYHLdnSdZqosl1-/view?usp=sharing)
 
 
 ## Bibtex
