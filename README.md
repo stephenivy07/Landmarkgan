@@ -1,4 +1,8 @@
-## Tips
+# Landmarkgan: Synthesizing faces from landmarks
+This repository is the implementation of our work, [Landmarkgan: Synthesizing faces from landmarks](https://www.sciencedirect.com/science/article/pii/S016786552200215X)
+
+
+## Preparation
 ```shell
 1.landmark coordinates order:
     facial boundary landmarks are in the last.
